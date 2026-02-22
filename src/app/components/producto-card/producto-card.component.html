@@ -1,0 +1,30 @@
+<div class="card">
+  <!-- Imagen -->
+  <img class="img" [src]="product.portada" [alt]="product.nombre" />
+
+  <div class="body">
+    <!-- Título + precio -->
+    <div class="top">
+      <h3 class="title">{{ product.nombre }}</h3>
+      <span class="price">{{ product.precio | currency:'MXN' }}</span>
+    </div>
+
+    <!-- Metadatos -->
+    <p class="meta">{{ product.autor }}</p>
+    <p class="meta">{{ product.editorial }} · {{ product.anio }}</p>
+    <p class="meta">ISBN: {{ product.isbn }}</p>
+    <p class="meta">{{ product.categoria }}</p>
+
+    <!-- Descripción -->
+    <p class="desc">{{ product.descripcion }}</p>
+
+    <!-- Stock -->
+    <p class="stock" [class.out]="product.stock === 0">
+      <span *ngIf="product.stock > 0">En stock ({{ product.stock }})</span>
+      <span *ngIf="product.stock === 0">Agotado</span>
+    </p>
+
+    <!-- Botón -->
+    <button class="btn" [disabled]="product.stock === 0">Agregar</button>
+  </div>
+</div>

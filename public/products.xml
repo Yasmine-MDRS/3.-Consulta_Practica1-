@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <id>1</id>
+        <portada>https://http2.mlstatic.com/D_NQ_NP_798613-MLU74993927730_032024-F.jpg</portada>
+        <nombre>Orgullo y Prejuicio</nombre>
+        <autor>Jane Austen</autor>
+        <editorial>Penguin Clásicos</editorial>
+        <anio>1813</anio>
+        <isbn>9780141439518</isbn>
+        <categoria>Novela romántica</categoria>
+        <descripcion>Una historia clásica sobre el amor, el orgullo y las diferencias sociales.</descripcion>
+        <precio>350</precio>
+        <stock>12</stock>
+    </product>
+
+    <product>
+        <id>2</id>
+        <portada>https://www.buscalibre.com.mx/libro-cien-anos-de-soledad/9789500700290/p/34490080</portada>
+        <nombre>Cien Años de Soledad</nombre>
+        <autor>Gabriel García Márquez</autor>
+        <editorial>Editorial Sudamericana</editorial>
+        <anio>1967</anio>
+        <isbn>9788439724768</isbn>
+        <categoria>Realismo mágico</categoria>
+        <descripcion>La historia de la familia Buendía a lo largo de varias generaciones.</descripcion>
+        <precio>420</precio>
+        <stock>8</stock>
+    </product>
+
+    <product>
+        <id>3</id>
+        <portada>https://editorial.tirant.com/high/9788418174193.jpg</portada>
+        <nombre>El Principito</nombre>
+        <autor>Antoine de Saint-Exupéry</autor>
+        <editorial>Salamandra</editorial>
+        <anio>1943</anio>
+        <isbn>9788498381498</isbn>
+        <categoria>Literatura infantil</categoria>
+        <descripcion>Un relato filosófico sobre la amistad, el amor y la vida.</descripcion>
+        <precio>250</precio>
+        <stock>20</stock>
+    </product>
+
+    <product>
+        <id>4</id>
+        <portada>https://www.elsotano.com/libro-la-casa-de-los-espiritus-trilogia-la-casa-de-los-espiritus-iii-10640569?srsltid=AfmBOook2MhWuibTrCiivxMn5zZmIr3fzX2kguaUcbjErcMk2Y9hldJB</portada>
+        <nombre>La Casa de los Espíritus</nombre>
+        <autor>Isabel Allende</autor>
+        <editorial>DeBolsillo</editorial>
+        <anio>1982</anio>
+        <isbn>9788401352836</isbn>
+        <categoria>Novela contemporánea</categoria>
+        <descripcion>Una saga familiar marcada por la política, la magia y las emociones.</descripcion>
+        <precio>439</precio>
+        <stock>9</stock>
+    </product>
+
+    <product>
+        <id>5</id>
+        <portada>https://m.media-amazon.com/images/I/91pqP1xMb2L._UF1000,1000_QL80_.jpg</portada>
+        <nombre>Alchemised: No queda a nadie a quien salvar </nombre>
+        <autor>SenLinYu</autor>
+        <editorial>Penguin Random House </editorial>
+        <anio>2025</anio>
+        <isbn>9780000000005</isbn>
+        <categoria>Fantasía romántica</categoria>
+        <descripcion> Oscura historia de fantasía sobre supervivencia y un amor intenso y trágico que se desarrolla en un mundo brutal y postapocalíptico. </descripcion>
+        <precio>600</precio>
+        <stock>7</stock>
+    </product>
+</products>
