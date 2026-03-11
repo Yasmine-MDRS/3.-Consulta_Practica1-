@@ -1,13 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter,Input,Output } from '@angular/core';
 import type { Product } from '../../models/producto.model';
-import { CommonModule, CurrencyPipe } from '@angular/common'; 
+
 @Component({
   selector: 'app-producto-card',
-  templateUrl: './producto-card.component.html',
-  styleUrls: ['./producto-card.component.css'],
   standalone: true,
-  imports: [CommonModule, CurrencyPipe]
+  imports: [],
+  templateUrl: './producto-card.component.html',
+  styleUrls: ['./producto-card.component.css'], 
 })
 export class ProductCardComponent {
-  @Input() product!: Product; // ⚡ esto ya no es un Signal
+   @Input({ required: true }) product!: Product;
+  @Output() add = new EventEmitter<Product>();
+
+  onAdd() {
+    this.add.emit(this.product);
+}
 }

@@ -3,10 +3,11 @@
   <img class="img" [src]="product.portada" [alt]="product.nombre" />
 
   <div class="body">
+
     <!-- Título + precio -->
     <div class="top">
       <h3 class="title">{{ product.nombre }}</h3>
-      <span class="price">{{ product.precio | currency:'MXN' }}</span>
+      <span class="price">$ {{ product.precio }}</span>
     </div>
 
     <!-- Metadatos -->
@@ -19,12 +20,14 @@
     <p class="desc">{{ product.descripcion }}</p>
 
     <!-- Stock -->
-    <p class="stock" [class.out]="product.stock === 0">
-      <span *ngIf="product.stock > 0">En stock ({{ product.stock }})</span>
-      <span *ngIf="product.stock === 0">Agotado</span>
+    <p class="stock">
+      {{ product.stock > 0 ? 'En stock (' + product.stock + ')' : 'Agotado' }}
     </p>
 
     <!-- Botón -->
-    <button class="btn" [disabled]="product.stock === 0">Agregar</button>
+    <button class="btn" [disabled]="product.stock === 0" (click)="onAdd()">
+      Agregar al carrito
+    </button>
+
   </div>
 </div>

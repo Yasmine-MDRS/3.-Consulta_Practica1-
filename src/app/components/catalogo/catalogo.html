@@ -12,6 +12,9 @@
 </header>
 <section class="grid">
     @for (p of products(); track p.id) {
-    <app-producto-card [product]="p"></app-producto-card>}
+    <app-producto-card [product]="p" (add)="agregar($event)"></app-producto-card>}
 
 </section>
+<hr class="sep" />
+<app-carrito></app-carrito>
+

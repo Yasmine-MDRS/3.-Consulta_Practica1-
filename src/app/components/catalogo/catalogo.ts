@@ -1,25 +1,34 @@
-import { Component, Signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, signal, Signal } from '@angular/core';
+import { Product } from '../../models/producto.model';
 import { ProductsService } from '../../services/products.service';
 import { ProductCardComponent } from '../producto-card/producto-card.component';
-import { CommonModule } from '@angular/common';
-import type { Product } from '../../models/producto.model';
+import { CarritoComponent } from '../carrito/carrito';
+import { CarritoService } from '../../services/carrito.service';
 
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule, ProductCardComponent],
+  imports: [ProductCardComponent, CarritoComponent],
   templateUrl: './catalogo.html',
   styleUrls: ['./catalogo.css'],
 })
 export class Catalogo { 
-  products!: Signal<Product[] | null>; // ⚡ declarada aquí
+  products = signal<Product[]>([]);
+  inStockCount = computed(() => this.products().filter(p => p.stock > 0).length);
 
-  constructor(private productsService: ProductsService) {
-    this.products = toSignal<Product[] | null>(
-      this.productsService.getAll(),
-      { initialValue: null } // ⚡ null inicial
-    );
+  constructor(
+    private productsService: ProductsService,
+    private carritoService: CarritoService
+  ) {
+    this.productsService.getAll().subscribe({
+      next: (data) => this.products.set(data),
+      error: (err) => console.error('Error cargando XML:', err),
+    });
+  }
+
+  agregar(producto: Product) {
+    this.carritoService.agregar(producto);
   }
 }
+
