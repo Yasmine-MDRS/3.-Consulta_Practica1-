@@ -26,7 +26,15 @@ export class Catalogo {
       error: (err) => console.error('Error cargando XML:', err),
     });
   }
+showCart = signal(false);
 
+cartCount = computed(() =>
+  this.carritoService.productos().length
+);
+
+toggleCart() {
+  this.showCart.update(v => !v);
+}
   agregar(producto: Product) {
     this.carritoService.agregar(producto);
   }

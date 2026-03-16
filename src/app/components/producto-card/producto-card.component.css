@@ -43,9 +43,9 @@
 
 /* TÍTULO + PRECIO */
 .card .top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 6px;
 }
 
@@ -61,6 +61,7 @@
   font-size: 1rem;
   font-weight: 700;
   color: #a50e0e;
+  margin-top: 4px;
 }
 
 /* METADATOS */

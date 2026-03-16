@@ -1,9 +1,67 @@
-.header{margin: bottom 16px;}
-h1{margin: 0 0 6px;}
-p{margin: 0 ;color: #6b7280;}
-grid{display: grid;
-grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-gap: 16px;
+/* HEADER */
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 24px;
+}
+/* CONTENEDOR DEL CARRITO */
+.cart-icon{
+  position:absolute;
+  right:30px;
+  cursor:pointer;
+}
+
+/* IMAGEN DEL CARRITO */
+.cart-img{
+  width:40px;
+  height:40px;
+}
+/* CONTADOR */
+.badge{
+  position:absolute;
+  top:-5px;
+  right:-8px;
+  background:#a50e0e;
+  color:white;
+  font-size:12px;
+  padding:3px 7px;
+  border-radius:50%;
+}
+
+/* PANEL DEL CARRITO */
+.cart-dropdown{
+  position:fixed;
+  top:90px;
+  right:30px;
+  width:320px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  padding:15px;
+  z-index:1000;
+}
+h1{
+  margin:0;
+}
+
+.sep{
+  margin:30px 0;
+}
+
+/* GRID DE PRODUCTOS */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap:20px;
+  padding:20px;
+  max-width:1400px;
+  margin:0 auto;
 }
 
 

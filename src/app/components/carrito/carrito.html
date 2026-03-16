@@ -4,6 +4,9 @@
   @if (carrito().length === 0) {
     <p class="empty">Tu carrito está vacío.</p>
   } @else {
+    <div class="items-container">
+      {{ carrito().length }} {{ carrito().length === 1 ? 'producto' : 'productos' }}
+ 
     <ul class="list">
       @for (producto of carrito(); track producto.id) {
         <li class="item">
@@ -17,7 +20,7 @@
         </li>
       }
     </ul>
-
+   </div>
     <div class="total">
       Total: {{ total() | currency:'MXN' }}
     </div>
