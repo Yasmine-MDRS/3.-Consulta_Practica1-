@@ -1,0 +1,28 @@
+<nav class="navbar">
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/logo.png" alt="logo">
+  </div>
+
+  <!-- Menú -->
+  <ul class="menu">
+    <li><a href="#">Inicio</a></li>
+    <li><a routerLink="/catalogo" class="active">Catálogo</a></li>
+    <li><a href="#">Categorías</a></li>
+    <li><a href="#">Perfil</a></li>
+  </ul>
+
+  <!-- Carrito -->
+<div class="cart" (click)="toggleCart();$event.stopPropagation()">
+  <img src="assets/carrito.png" />
+  <span class="badge">{{ totalItems() }}</span>
+</div>
+
+@if (showCart) {
+  <div class="cart-panel" (click)="$event.stopPropagation()">
+   <app-carrito></app-carrito>
+  </div>
+  
+}
+</nav>

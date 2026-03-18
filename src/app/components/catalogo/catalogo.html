@@ -1,29 +1,17 @@
-<header class="header">
-  <h1>Catálogo</h1>
-  <div class="cart-icon" (click)="toggleCart()">
+<div class="catalogo">
 
-    <img src="assets/carrito.png" alt="Carrito" class="cart-img">
+  @for (p of products(); track p.id) {
+    <div class="card">
 
-    @if (cartCount() > 0) {
-    <span class="badge">
-      {{ cartCount() }}
-    </span>
+      <img [src]="p.portada" />
+
+      <h3>{{ p.nombre }}</h3>
+      <p>{{ p.autor }}</p>
+      <p>{{ p.precio | currency }}</p>
+
+      <button (click)="agregar(p)">
+        Agregar al carrito
+      </button>
+    </div>
   }
-
-
-  </div>
-</header>
-
-<section class="grid">
-    @for (p of products(); track p.id) {
-    <app-producto-card [product]="p" (add)="agregar($event)"> 
-    </app-producto-card>}
-
-</section>
-
-@if (showCart()) {
-  <div class="cart-dropdown">
-    <app-carrito></app-carrito>
-  </div>
-}
-
+</div>
