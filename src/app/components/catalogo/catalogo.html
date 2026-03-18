@@ -1,17 +1,6 @@
-<div class="catalogo">
+<section class="grid">
+    @for (p of products(); track p.id) {
+    <app-producto-card [product]="p" (add)="agregar($event)"></app-producto-card>}
 
-  @for (p of products(); track p.id) {
-    <div class="card">
-
-      <img [src]="p.portada" />
-
-      <h3>{{ p.nombre }}</h3>
-      <p>{{ p.autor }}</p>
-      <p>{{ p.precio | currency }}</p>
-
-      <button (click)="agregar(p)">
-        Agregar al carrito
-      </button>
-    </div>
-  }
-</div>
+</section>
+<hr class="sep" />

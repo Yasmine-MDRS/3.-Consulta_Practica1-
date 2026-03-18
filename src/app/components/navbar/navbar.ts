@@ -6,7 +6,7 @@ import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CarritoComponent,CurrencyPipe],
+  imports: [CarritoComponent],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
 })
