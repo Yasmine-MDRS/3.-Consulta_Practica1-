@@ -1,22 +1,30 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
-import { Product } from "../../models/producto.model";
-import { Signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CurrencyPipe], // NO es CommonModule
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './carrito.html',
   styleUrls: ['./carrito.css'],
 })
 export class CarritoComponent {
-  carrito: Signal<Product[]>;
-  total = computed(() => this.carritoService.total());
+  private carritoService = inject(CarritoService);
 
-  constructor(private carritoService: CarritoService) {
-    this.carrito = this.carritoService.productos;
+  // Vinculación a señales del servicio
+  carrito = this.carritoService.productos; 
+  total = this.carritoService.total;
+
+  // Contador dinámico de items para la etiqueta superior
+  totalItems = computed(() => {
+    return this.carrito().reduce((acc, p) => acc + (p.cantidad || 1), 0);
+  });
+
+  // Métodos de acción que llaman al servicio
+  agregarUno(item: any) {
+    this.carritoService.agregar(item);
   }
 
   quitar(id: number) {
@@ -31,8 +39,3 @@ export class CarritoComponent {
     this.carritoService.exportarXML();
   }
 }
-
-
-
-
-

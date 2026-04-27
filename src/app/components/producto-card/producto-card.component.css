@@ -100,13 +100,13 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  background: #a50e0e;
+  background: #A020F0;
   color: #ffffff;
   transition: background 0.2s ease, opacity 0.2s ease;
 }
 
 .card .btn:hover {
-  background: #8a0c0c;
+  background: #E0B0FF;
 }
 
 .card .btn:disabled {

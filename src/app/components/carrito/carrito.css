@@ -1,38 +1,127 @@
-.cart{
-  width:100%;
-  max-height:500px;
-  display:flex;
-  flex-direction:column;
+/* Contenedor Principal: Ahora con altura máxima fija para no perder botones */
+.cart-card {
+  border: 3px solid #000;
+  border-radius: 20px;
+  padding: 25px;
+  background-color: #fff;
+  box-shadow: 10px 10px 0px #000;
+  
+  /* AJUSTE CLAVE: Altura fija para que el carrito no crezca infinito */
+  width: 100%;
+  max-width: 500px;
+  height: 80vh; /* Ocupa el 90% de la altura de la ventana */
+  max-height: 700px; /* Pero no más de 700px */
+  
+  display: flex;
+  flex-direction: column; /* Alinea hijos verticalmente */
+  box-sizing: border-box;
+  margin: 10px auto;
+  font-family: 'Inter', sans-serif;
 }
 
-/* CONTENEDOR SCROLL */
-.items-container{
-  max-height:260px;
-  overflow-y:auto;
-  padding-right:6px;
+/* Cabecera: Siempre se queda arriba */
+.cart-header {
+  flex-shrink: 0; /* No deja que se comprima */
+  margin-bottom: 20px;
 }
 
-/* SCROLL BONITO (opcional) */
-.items-container::-webkit-scrollbar{
-  width:6px;
+.title { font-size: 30px; font-weight: 900; margin: 0; }
+.product-count { font-size: 18px; font-weight: 600; }
+
+/* --- EL ÁREA DE PRODUCTOS: LA ÚNICA QUE TIENE SCROLL --- */
+.items-viewport {
+  flex-grow: 1; /* Ocupa todo el espacio disponible entre el título y el total */
+  overflow-y: auto; /* Activa el scroll si hay muchos productos */
+  padding-right: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent; /* Evita saltos de layout */
 }
 
-.items-container::-webkit-scrollbar-thumb{
-  background:#a50e0e;
-  border-radius:4px;
+/* Scrollbar estilo Neo-brutalista */
+.items-viewport::-webkit-scrollbar { width: 10px; }
+.items-viewport::-webkit-scrollbar-track { 
+  background: #f0f0f0; 
+  border: 2px solid #000; 
+  border-radius: 5px; 
 }
-.title { margin: 0 0 10px; font-size: 18px; }
-.empty { margin: 0; color: #6b7280; }
+.items-viewport::-webkit-scrollbar-thumb { 
+  background: #A020F0; 
+  border: 2px solid #000; 
+  border-radius: 5px; 
+}
 
-.list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-.item { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px; }
-.line { font-size: 14px; }
+/* Fila de Producto */
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #fff;
+}
 
-.total { margin-top: 12px; font-weight: 700; }
+.book-details { font-weight: 700; flex: 1; }
 
-.actions { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
-.btn { border: 0; border-radius: 10px; padding: 10px 12px; cursor: pointer; }
-.btn.danger { background: #ef4444; color: #fff; }
-.btn.purple { background: #7c3aed; color: #fff; }
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.circle-btn {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  background: #E0B0FF;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Pie del Carrito: Siempre se queda abajo visible */
+.cart-footer {
+  flex-shrink: 0; /* No deja que se mueva hacia abajo */
+  border-top: 3px solid #000;
+  padding-top: 15px;
+  background: #fff;
+}
+
+.total-display { margin-bottom: 15px; }
+.total-price { font-size: 26px; font-weight: 900; }
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: #E0B0FF;
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-weight: 800;
+  box-shadow: 4px 4px 0px #000;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #A020F0;
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 800;
+  box-shadow: 4px 4px 0px #000;
+  text-decoration: none;
+}
+
+.btn-secondary:active, .btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+}

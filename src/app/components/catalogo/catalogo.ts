@@ -3,13 +3,12 @@ import { Product } from '../../models/producto.model';
 import { ProductsService } from '../../services/products.service';
 import { ProductCardComponent } from '../producto-card/producto-card.component';
 import { CarritoService } from '../../services/carrito.service';
-import { CurrencyPipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [ProductCardComponent,CurrencyPipe],
+  imports: [ProductCardComponent],
   templateUrl: './catalogo.html',
   styleUrls: ['./catalogo.css'],
 })
@@ -23,15 +22,15 @@ export class Catalogo {
 
   constructor(
     private productsService: ProductsService,
-    private carritoService: CarritoService // ✅ se mantiene
+    private carritoService: CarritoService 
   ) {
     this.productsService.getAll().subscribe({
       next: (data) => this.products.set(data),
-      error: (err) => console.error('Error cargando XML:', err),
+      error: (err) => console.error('Error cargando BD:', err),
     });
   }
 
   agregar(producto: Product) {
-    this.carritoService.agregar(producto); // 🔥 conecta con navbar
-  }
+    this.carritoService.agregar(producto); 
+}
 }
