@@ -1,33 +1,43 @@
-<section class="cart">
-  <h2 class="title">Carrito</h2>
+<div class="cart-card">
+  <header class="cart-header">
+    <h1 class="title">Carrito</h1>
+    <div class="product-count">
+      {{ totalItems() }} {{ totalItems() === 1 ? 'producto' : 'productos' }}
+    </div>
+  </header>
 
-  @if (carrito().length === 0) {
-    <p class="empty">Tu carrito está vacío.</p>
-  } @else {
-    <div class="items-container">
-      {{ carrito().length }} {{ carrito().length === 1 ? 'producto' : 'productos' }}
- 
-    <ul class="list">
-      @for (producto of carrito(); track producto.id) {
-        <li class="item">
-          <span class="line">
-            {{ producto.nombre }} - {{ producto.precio | currency:'MXN' }}
-          </span>
-
-          <button class="btn danger" (click)="quitar(producto.id)">
-            Quitar
-          </button>
-        </li>
+  @if (carrito().length > 0) {
+    <div class="items-viewport">
+      @for (item of carrito(); track item.id) {
+        <div class="item-row">
+          <div class="book-details">
+            {{ item.nombre }}<br>
+            <strong>{{ item.precio | currency:'MXN':'symbol-narrow' }}</strong>
+          </div>
+          
+          <div class="quantity-box">
+            <button class="circle-btn" (click)="agregarUno(item)">+</button>
+            <span class="qty-val" style="font-weight: 900;">{{ item.cantidad || 1 }}</span>
+            <button class="circle-btn" (click)="quitar(item.id)">-</button>
+          </div>
+        </div>
       }
-    </ul>
-   </div>
-    <div class="total">
-      Total: {{ total() | currency:'MXN' }}
     </div>
 
-    <div class="actions">
-      <button class="btn" (click)="vaciar()">Vaciar carrito</button>
-      <button class="btn purple" (click)="exportarXML()">Exportar Recibo XML</button>
+    <footer class="cart-footer">
+      <div class="total-display">
+        <span style="font-weight: 600;">Total:</span>
+        <div class="total-price">{{ total() | currency:'MXN':'symbol-narrow' }}</div>
+      </div>
+
+      <div class="button-group">
+        <button class="btn-secondary" (click)="vaciar()">Vaciar</button>
+        <a class="btn-primary" routerLink="/checkout">Pagar</a>
+      </div>
+    </footer>
+  } @else {
+    <div style="text-align: center; padding: 40px;">
+      <p style="font-weight: 900; font-size: 20px;">TU CARRITO ESTÁ VACÍO</p>
     </div>
   }
-</section>
+</div>

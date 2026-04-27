@@ -7,11 +7,12 @@
 
   <!-- Menú -->
   <ul class="menu">
-    <li><a href="#">Inicio</a></li>
-    <li><a routerLink="/catalogo" class="active">Catálogo</a></li>
-    <li><a href="#">Categorías</a></li>
-    <li><a href="#">Perfil</a></li>
+    <li><a routerLink="/"class="nav-link">Inicio</a></li>
+    <li><a routerLink="/catalogo"class="nav-link">Catálogo</a></li>
+    <li><a routerLink="/catalogo"class="nav-link">Categorías</a></li>
+    <li><a routerLink="/catalogo"class="nav-link">Perfil</a></li>
   </ul>
+
 
   <!-- Carrito -->
 <div class="cart" (click)="toggleCart();$event.stopPropagation()">

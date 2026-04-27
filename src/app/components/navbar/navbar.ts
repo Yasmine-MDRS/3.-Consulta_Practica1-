@@ -2,11 +2,11 @@ import { Component, inject, computed,HostListener, ElementRef } from '@angular/c
 import { CarritoService } from '../../services/carrito.service';
 import { CarritoComponent } from '../carrito/carrito';
 import { CurrencyPipe } from '@angular/common';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CarritoComponent],
+  imports: [CarritoComponent, RouterLink],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
 })
