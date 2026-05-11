@@ -1,0 +1,92 @@
+/* CONTENEDOR GENERAL */
+.home-container {
+  padding: 20px;
+  background: #eee;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ------------------ */
+/* BANNER PRINCIPAL */
+/* ------------------ */
+.banner img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* ------------------ */
+/* MINI CARDS */
+/* ------------------ */
+.mini-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.mini-card img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.mini-card img:hover {
+  transform: scale(1.05);
+}
+
+/* ------------------ */
+/* GRID PRINCIPAL */
+/* ------------------ */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* CARDS GENERALES */
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.card img:hover {
+  transform: scale(1.03);
+}
+
+.grande {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3; /* ocupa 2 filas */
+}
+
+/* CARD CENTRO */
+.grid .card:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+/* CARD DERECHA */
+.grid .card:nth-child(3) {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+.nueva {
+  grid-row: 2 / 3;
+  grid-column: span 2;
+   object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+/* ------------------ */
+/* BANNER INFERIOR */
+/* ------------------ */
+.banner-inferior img {
+  width: 100%;
+  border-radius: 12px;
+}

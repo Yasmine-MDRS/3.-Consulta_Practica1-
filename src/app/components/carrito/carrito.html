@@ -16,9 +16,9 @@
           </div>
           
           <div class="quantity-box">
-            <button class="circle-btn" (click)="agregarUno(item)">+</button>
-            <span class="qty-val" style="font-weight: 900;">{{ item.cantidad || 1 }}</span>
             <button class="circle-btn" (click)="quitar(item.id)">-</button>
+            <span class="qty-val" style="font-weight: 900;">{{ item.cantidad || 1 }}</span>
+            <button class="circle-btn" (click)="agregarUno(item)">+</button>
           </div>
         </div>
       }

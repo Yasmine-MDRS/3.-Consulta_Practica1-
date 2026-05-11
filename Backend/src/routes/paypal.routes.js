@@ -1,9 +1,9 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
 
-import { createOrder, captureOrder } from '../controllers/paypal.controllers.js';
+const { createOrder, captureOrder } = require('../controllers/paypal.controllers.js');
 
 router.post('/create-order', createOrder);
 router.post('/capture-order', captureOrder);
 
-export default router;
+module.exports = router;

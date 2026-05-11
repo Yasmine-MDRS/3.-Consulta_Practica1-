@@ -1,0 +1,63 @@
+@if (producto(); as p) {
+
+<div class="detalle">
+
+  <!-- 🔙 BOTÓN VOLVER -->
+  <button class="btn-back" (click)="volver()">
+    <img src="assets/atras.png" alt="Volver">
+  </button>
+
+  <span class="precio-top">$ {{ p.precio }}</span>
+  <div class="left">
+    <img [src]="p.portada" class="portada">
+  </div>
+
+  <div class="right">
+
+    <h2>{{ p.nombre }}</h2>
+
+    <p class="autor">{{ p.autor }}</p>
+
+    <p class="editorial">
+      {{ p.editorial }} - {{ p.anio }}
+    </p>
+
+    <p class="isbn">
+      ISBN: {{ p.isbn }}
+    </p>
+
+    <p class="categoria">
+      {{ p.categoria }}
+    </p>
+
+       <div class="descripcion">
+      {{ p.descripcion }}
+    </div>
+
+    <div class="bottom">
+
+      <span 
+        class="stock"
+        [class.low]="p.stock <= 5 && p.stock > 0"
+        [class.out]="p.stock === 0"
+      >
+        {{
+          p.stock === 0
+            ? 'Agotado'
+            : p.stock <= 5
+            ? 'Últimas unidades'
+            : 'Disponible: ' + p.stock
+        }}
+      </span>
+      
+      <button 
+        class="btn-carrito"
+        (click)="agregarCarrito()"
+        [disabled]="p.stock === 0"
+      >
+        {{ p.stock === 0 ? 'Sin stock' : 'Agregar al carrito' }}
+      </button>
+    </div>
+  </div>
+</div>
+}

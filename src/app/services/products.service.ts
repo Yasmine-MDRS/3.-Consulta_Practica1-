@@ -1,15 +1,28 @@
-import { Injectable, inject, PLATFORM_ID } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
-import { isPlatformBrowser } from '@angular/common';
+import { Observable } from 'rxjs';
 import { Product } from "../models/producto.model";
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {  
 
-  private http=inject(HttpClient);
+  private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api/productos';
-  getAll():Observable<Product[]>{
+
+  getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
+  }
+  buscar(termino: string): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      `${this.apiUrl}/buscar?q=${termino}`
+    );
+  }
+  getByCategoria(categoria: string): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      `${this.apiUrl}/categoria/${categoria}`
+    );
+  }
+  getById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
 }

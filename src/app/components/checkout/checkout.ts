@@ -67,14 +67,14 @@ export class CheckoutComponent implements AfterViewInit {
       onApprove: async (data: any) => {
         try {
           const capture = await firstValueFrom(
-            this.paypalService.capturarOrden(data.orderID)
+            this.paypalService.capturarOrden(data.orderID, this.carrito())
           );
 
           console.log('Pago capturado:', capture);
           this.mensaje = 'Pago realizado correctamente.';
           alert('¡Gracias por tu compra!');
           this.carritoService.exportarXML();
-          this.carritoService.vaciar();
+          this.carritoService.confirmarCompra();
           this.paypalButtonContainer.nativeElement.innerHTML = '';
         } catch (error) {
           console.error('Error al capturar el pago:', error);
