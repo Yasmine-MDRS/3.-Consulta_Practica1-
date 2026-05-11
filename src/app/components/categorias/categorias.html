@@ -1,0 +1,33 @@
+<div class="categorias-container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h3>Categorías</h3>
+
+    @for (cat of categorias; track cat) {
+      <button 
+        (click)="cargarCategoria(cat)"
+        [class.active]="categoriaActiva() === cat"
+      >
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <!-- PRODUCTOS -->
+  <div class="catalog">
+
+    @if (productos().length === 0) {
+      <p>No hay libros en esta categoría</p>
+    }
+
+    @for (p of productos(); track p.id) {
+      <app-producto-card
+        [product]="p"
+        (add)="agregar($event)"
+      />
+    }
+
+  </div>
+
+</div>

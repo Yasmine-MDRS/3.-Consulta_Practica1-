@@ -25,14 +25,20 @@ export class CarritoComponent {
   // Métodos de acción que llaman al servicio
   agregarUno(item: any) {
     this.carritoService.agregar(item);
+    alert(`Agregado con éxito: ${item.nombre}`);
   }
 
   quitar(id: number) {
     this.carritoService.quitar(id);
+    const item = this.carrito().find(p => p.id === id);
+    if (item) {
+      alert(`Quitado del carrito: ${item.nombre}`);
+    }
   }
 
   vaciar() {
     this.carritoService.vaciar();
+    alert(`Carrito vaciado`);
   }
 
   exportarXML() {

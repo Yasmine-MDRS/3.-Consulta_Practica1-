@@ -1,0 +1,114 @@
+.detalle {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 1200px;
+  background: #f4f4f4;
+  border-radius: 20px;
+}
+
+/* BOTÓN VOLVER */
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-back img {
+  width: 30px;
+}
+
+/* IZQUIERDA */
+.left {
+  width: 300px;
+  margin-top: 40px;
+}
+
+.portada {
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+/* DERECHA */
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* BLOQUES */
+.right h2,
+.right p,
+.descripcion {
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* DESCRIPCIÓN GRANDE */
+.descripcion {
+  height: 120px;
+}
+
+/* PARTE INFERIOR */
+.bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stock {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: #dcdcdc;
+}
+
+.stock.low {
+  background: #ffe082;
+  color: #8a6d00;
+}
+
+.stock.out {
+  background: #ffcccc;
+  color: #b00020;
+}
+
+.precio-top {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #A020F0;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 12px;
+}
+
+/* BOTÓN */
+.btn-carrito {
+  background: #A020F0;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-carrito:hover {
+  background: #E0B0FF;
+}

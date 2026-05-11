@@ -1,32 +1,21 @@
-<div class="card">
-  <!-- Imagen -->
-  <img class="img" [src]="product.portada" [alt]="product.nombre" />
+<div class="card" (click)="verDetalle()">
 
-  <div class="body">
+  <img class="img" [src]="product.portada" />
 
-    <!-- Título + precio -->
-    <div class="top">
-      <h3 class="title">{{ product.nombre }}</h3>
-      <span class="price">$ {{ product.precio }}</span>
-    </div>
+  <h3>{{ product.nombre }}</h3>
+  <p>{{ product.autor }}</p>
 
-    <!-- Metadatos -->
-    <p class="meta">{{ product.autor }}</p>
-    <p class="meta">{{ product.editorial }} · {{ product.anio }}</p>
-    <p class="meta">ISBN: {{ product.isbn }}</p>
-    <p class="meta">{{ product.categoria }}</p>
+  <p class="price">$ {{ product.precio }}</p>
 
-    <!-- Descripción -->
-    <p class="desc">{{ product.descripcion }}</p>
+  <p class="stock">
+    {{ product.stock > 0 ? 'En stock (' + product.stock + ')' : 'Agotado' }}
+  </p>
 
-    <!-- Stock -->
-    <p class="stock">
-      {{ product.stock > 0 ? 'En stock (' + product.stock + ')' : 'Agotado' }}
-    </p>
+  <button class="btn"
+    (click)="onAdd($event)"
+    [disabled]="product.stock <= 0"
+  >
+    {{ product.stock > 0 ? 'Agregar' : 'Sin stock' }}
+  </button>
 
-    <!-- Botón -->
-    <button class="btn" [disabled]="product.stock === 0" (click)="onAdd()">
-      Agregar al carrito
-    </button>
-  </div>
 </div>

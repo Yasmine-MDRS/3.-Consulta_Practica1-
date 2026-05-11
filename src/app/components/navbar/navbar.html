@@ -9,11 +9,22 @@
   <ul class="menu">
     <li><a routerLink="/"class="nav-link">Inicio</a></li>
     <li><a routerLink="/catalogo"class="nav-link">Catálogo</a></li>
-    <li><a routerLink="/catalogo"class="nav-link">Categorías</a></li>
+    <li><a routerLink="/categorias"class="nav-link">Categorías</a></li>
     <li><a routerLink="/catalogo"class="nav-link">Perfil</a></li>
   </ul>
+<form (submit)="onBuscar($event)" class="search-box">
+  <input 
+    type="text" 
+    [(ngModel)]="busqueda" 
+    name="busqueda"
+    placeholder="Buscar libros o autores..."
+     class="input-busqueda"
+  />
 
-
+  <button type="submit" class="btn-search">
+    <img src="assets/buscar.png" alt="Buscar" />
+  </button>  
+</form>
   <!-- Carrito -->
 <div class="cart" (click)="toggleCart();$event.stopPropagation()">
   <img src="assets/carrito.png" />
