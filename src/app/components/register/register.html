@@ -1,0 +1,48 @@
+<div class="auth-page">
+
+  <img src="assets/logo.png" class="logo">
+
+  <div class="auth-card">
+
+    <h1>Librería Starlight</h1>
+    <h2 class="auth-title">Registro de Cuenta</h2>
+
+    <label>Ingrese su Correo</label>
+    <input 
+      type="email"
+      [(ngModel)]="correo"
+      placeholder="Correo electrónico"
+    >
+
+    <label>Ingrese una Contraseña Válida</label>
+    <input 
+      type="password"
+      [(ngModel)]="contrasena"
+      placeholder="Contraseña"
+    >
+
+    <label>Ingrese Domicilio al que se entregarán los Paquetes</label>
+    <input 
+      type="text"
+      [(ngModel)]="domicilio"
+      placeholder="Domicilio"
+    >
+
+    <button class="main-btn" (click)="registrarse()">
+      Registrarse
+    </button>
+
+    <div class="link-box">
+      ¿Ya tienes una cuenta?
+      <a routerLink="/login">Inicia Sesión</a>
+    </div>
+
+  </div>
+
+  @if (toastVisible) {
+    <div class="toast">
+      {{ toastMensaje }}
+    </div>
+  }
+
+</div>
