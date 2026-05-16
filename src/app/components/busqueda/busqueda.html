@@ -1,11 +1,30 @@
-<h2>Resultados para "{{ query }}"</h2>
+<div class="busqueda-container">
 
-@if (products().length === 0) {
-  <p>No se encontraron resultados</p>
-}
+  <h2>
+    Resultados para: "{{ termino }}"
+  </h2>
 
-<section class="grid">
-  @for (p of products(); track p.id) {
-    <app-producto-card [product]="p"></app-producto-card>
+  @if (productos().length === 0) {
+
+    <p class="sin-resultados">
+      No se encontraron productos.
+    </p>
+
+  } @else {
+
+    <div class="resultados-grid">
+
+      @for (p of productos(); track p.id) {
+
+        <app-producto-card
+          [product]="p"
+          (add)="agregar($event)">
+        </app-producto-card>
+
+      }
+
+    </div>
+
   }
-</section>
+
+</div>

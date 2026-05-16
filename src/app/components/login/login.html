@@ -1,0 +1,45 @@
+<div class="auth-page">
+
+  <img src="assets/logo.png" class="logo">
+
+  <div class="auth-card">
+
+    <h1>Librería Starlight</h1>
+    <h2 class="auth-title">Login</h2>
+
+    <label>Ingrese su Correo</label>
+    <input 
+      type="email"
+      [(ngModel)]="correo"
+      placeholder="Correo electrónico"
+    >
+
+    <label>Ingrese su Contraseña</label>
+    <input 
+      type="password"
+      [(ngModel)]="contrasena"
+      placeholder="Contraseña"
+    >
+
+    <button class="recover">
+      ¿No recuerdas tu contraseña? Recupérala aquí
+    </button>
+
+    <button class="main-btn" (click)="iniciarSesion()">
+      Iniciar Sesión
+    </button>
+
+    <div class="link-box">
+      ¿Aún no tienes una cuenta?
+      <a routerLink="/register">Crear Cuenta</a>
+    </div>
+
+  </div>
+
+  @if (toastVisible) {
+    <div class="toast">
+      {{ toastMensaje }}
+    </div>
+  }
+
+</div>

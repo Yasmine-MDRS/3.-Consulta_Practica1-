@@ -2,32 +2,39 @@ import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/producto.model';
-import { ProductCardComponent } from '../../components/producto-card/producto-card.component';
+import { ProductCardComponent } from '../producto-card/producto-card.component';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-busqueda',
   standalone: true,
   imports: [ProductCardComponent],
-  templateUrl: './busqueda.html'
+  templateUrl: './busqueda.html',
+  styleUrl: './busqueda.css'
 })
-export class Busqueda {
+export class BusquedaComponent {
 
-  products = signal<Product[]>([]);
-  query = '';
+  productos = signal<Product[]>([]);
+  termino = '';
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private carritoService: CarritoService
   ) {
-
     this.route.queryParams.subscribe(params => {
-      this.query = params['q'] || '';
+      this.termino = params['q'] || '';
 
-      if (this.query) {
-        this.productsService.buscar(this.query).subscribe(data => {
-          this.products.set(data);
+      if (this.termino) {
+        this.productsService.buscar(this.termino).subscribe({
+          next: (data) => this.productos.set(data),
+          error: (err) => console.error('Error en búsqueda:', err)
         });
       }
     });
+  }
+
+  agregar(producto: Product) {
+    this.carritoService.agregar(producto);
   }
 }

@@ -1,0 +1,155 @@
+.auth-page {
+  min-height: 100vh;
+  background: #0b0b0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 35px;
+  left: 45px;
+  width: 120px;
+  height: auto;
+}
+
+.auth-card {
+  width: 520px;
+  min-height: 560px;
+  padding: 45px 60px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #5d7df0, #c044d4);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-card h1 {
+  font-family: cursive;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 45px;
+}
+
+.auth-card label {
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.auth-card input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 6px;
+  background: transparent;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  outline: none;
+}
+
+.auth-card input::placeholder {
+  color: white;
+  opacity: 0.85;
+  font-weight: bold;
+}
+
+.main-btn {
+  background: #eba1ff;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 28px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.main-btn:hover {
+  background: #d879f2;
+}
+
+.recover {
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.link-box {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.link-box a {
+  color: #004eff;
+  text-decoration: underline;
+}
+
+.mensaje {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+.auth-title {
+  font-size: 22px;
+  margin-top: -25px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.toast {
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  min-width: 280px;
+  max-width: 350px;
+
+  padding: 16px 22px;
+
+  background: rgba(35, 35, 35, 0.95);
+  color: white;
+
+  border-left: 5px solid #c044d4;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  z-index: 99999;
+
+  animation: toastIn 0.25s ease;
+}
+
+/* ANIMACIÓN */
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
