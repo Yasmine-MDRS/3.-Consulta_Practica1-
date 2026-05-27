@@ -82,33 +82,40 @@ for (const p of lista) {
 
   // XML
   exportarXML() {
-    const productos = this.productosSignal();
-    const fecha = new Date().toISOString();
+  const productos = this.productosSignal();
+  const fecha = new Date().toISOString();
+  const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
 
-    let subtotal = 0;
-    let conceptos = '';
+  let subtotal = 0;
+  let conceptos = '';
 
-    for (const p of productos) {
-      const cantidad = p.cantidad || 1;
-      const precio = Number(p.precio);
-      const importe = cantidad * precio;
+  for (const p of productos) {
+    const cantidad = p.cantidad || 1;
+    const precio = Number(p.precio);
+    const importe = cantidad * precio;
 
-      subtotal += importe;
+    subtotal += importe;
 
-      conceptos += `
+    conceptos += `
       <cfdi:Concepto 
         ClaveProdServ="01010101"
         Cantidad="${cantidad}"
         ClaveUnidad="H87"
-        Descripcion="${this.escapeXml(p.nombre)}"
+        Descripcion="${this.escapeXml(p.nombre || '')}"
         ValorUnitario="${precio.toFixed(2)}"
         Importe="${importe.toFixed(2)}"/>
-      `;
-    }
+    `;
+  }
 
-    const total = subtotal.toFixed(2);
+  const total = subtotal.toFixed(2);
 
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  const nombreReceptor = this.escapeXml(usuario.nombre_completo || 'Cliente General');
+  const rfcReceptor = this.escapeXml(usuario.rfc || 'XAXX010101000');
+  const usoCfdi = this.escapeXml(usuario.uso_cfdi || 'G03');
+  const codigoPostal = this.escapeXml(usuario.codigo_postal || '00000');
+  const regimenFiscal = this.escapeXml(usuario.regimen_fiscal || '616');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <cfdi:Comprobante 
   Version="4.0"
   Fecha="${fecha}"
@@ -122,9 +129,11 @@ for (const p of lista) {
     Rfc="XAXX010101000"/>
 
   <cfdi:Receptor 
-    Nombre="Cliente General"
-    Rfc="XAXX010101000"
-    UsoCFDI="G03"/>
+    Nombre="${nombreReceptor}"
+    Rfc="${rfcReceptor}"
+    UsoCFDI="${usoCfdi}"
+    DomicilioFiscalReceptor="${codigoPostal}"
+    RegimenFiscalReceptor="${regimenFiscal}"/>
 
   <cfdi:Conceptos>
     ${conceptos}
@@ -133,16 +142,16 @@ for (const p of lista) {
 </cfdi:Comprobante>
 `;
 
-    const blob = new Blob([xml], { type: 'application/xml' });
-    const url = URL.createObjectURL(blob);
+  const blob = new Blob([xml], { type: 'application/xml' });
+  const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'recibo.xml';
-    a.click();
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'recibo.xml';
+  a.click();
 
-    URL.revokeObjectURL(url);
-  }
+  URL.revokeObjectURL(url);
+}
 
   private escapeXml(value: string): string {
     return value.replace(/[&<>"']/g, (m) => ({

@@ -7,7 +7,7 @@ import { ProductDetalle } from './components/producto-detalle/product-detalle/pr
 import { CategoriasComponent } from './components/categorias/categorias';
 import { LoginComponent } from './components/login/login';
 import { RegisterComponent } from './components/register/register';
-//import { PerfilComponent } from './components/perfil/perfil';
+import { PerfilComponent } from './components/perfil/perfil';
 import{Home} from './components/home/home';
 
 export const routes: Routes = [
@@ -21,5 +21,6 @@ export const routes: Routes = [
   { path: 'categorias', component: CategoriasComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'perfil', component: PerfilComponent },
   { path: '**', redirectTo: "" } 
 ];
