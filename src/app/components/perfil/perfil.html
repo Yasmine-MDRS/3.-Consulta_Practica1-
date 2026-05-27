@@ -1,0 +1,146 @@
+<div class="perfil-page">
+
+  <div class="perfil-card">
+
+    <div class="bienvenida">
+      <h2>
+        Bienvenido Usuario {{ form.correo }}
+      </h2>
+    </div>
+
+    <div class="perfil-content">
+
+      <section class="datos-section">
+
+        <h3>Datos del usuario</h3>
+
+        <div class="campo">
+          <label>Nombre completo</label>
+          <input 
+            type="text"
+            [(ngModel)]="form.nombre_completo"
+            [disabled]="!editando"
+          >
+        </div>
+
+        <div class="campo">
+          <label>Correo</label>
+          <input 
+            type="email"
+            [(ngModel)]="form.correo"
+            disabled
+          >
+        </div>
+
+        <div class="campo">
+          <label>Dirección</label>
+          <input 
+            type="text"
+            [(ngModel)]="form.domicilio"
+            [disabled]="!editando"
+          >
+        </div>
+
+        <h3>Datos fiscales</h3>
+
+        <div class="campo">
+          <label>RFC</label>
+          <input 
+            type="text"
+            [(ngModel)]="form.rfc"
+            [disabled]="!editando"
+          >
+        </div>
+
+        <div class="campo">
+          <label>Régimen fiscal</label>
+          <input 
+            type="text"
+            [(ngModel)]="form.regimen_fiscal"
+            [disabled]="!editando"
+          >
+        </div>
+
+        <div class="campo">
+          <label>Uso CFDI</label>
+          <input 
+            type="text"
+            [(ngModel)]="form.uso_cfdi"
+            [disabled]="!editando"
+          >
+        </div>
+
+        <div class="campo">
+          <label>Código postal</label>
+          <input 
+            type="text"
+            [(ngModel)]="form.codigo_postal"
+            [disabled]="!editando"
+          >
+        </div>
+
+        <div class="acciones">
+          @if (!editando) {
+            <button class="btn-editar" (click)="activarEdicion()">
+              Editar perfil
+            </button>
+          } @else {
+            <button class="btn-guardar" (click)="guardarPerfil()">
+              Guardar
+            </button>
+
+            <button class="btn-cancelar" (click)="cancelarEdicion()">
+              Cancelar
+            </button>
+          }
+        </div>
+
+        @if (mensaje) {
+          <p class="mensaje">{{ mensaje }}</p>
+        }
+
+      </section>
+
+      <section class="historial-section">
+
+        <h3>Historial de compras</h3>
+
+        <div class="historial-box">
+
+          @if (pedidos().length === 0) {
+            <p class="sin-compras">
+              Aún no tienes compras registradas.
+            </p>
+          }
+@for (pedido of pedidos(); track pedido.id_pedido) {
+  <div class="pedido-card">
+
+    <div class="pedido-header">
+      <strong>Pedido #{{ pedido.id_pedido }}</strong>
+      <span>{{ pedido.fecha_compra | date:'dd/MM/yy' }}</span>
+    </div>
+
+    <p>Estado: {{ pedido.estado }}</p>
+    <p>Total: ${{ pedido.total }}</p>
+
+    <div class="detalle-libros">
+      @for (libro of pedido.detalles; track libro.nombre_producto) {
+        <div class="libro-comprado">
+          <span>{{ libro.nombre_producto }}</span>
+          <span>{{ libro.cantidad }} x ${{ libro.precio_unitario }}</span>
+          <strong>${{ libro.importe }}</strong>
+        </div>
+      }
+    </div>
+
+  </div>
+}         
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+</div>
