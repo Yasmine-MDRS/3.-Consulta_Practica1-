@@ -1,0 +1,40 @@
+<div class="auth-page">
+
+  <img src="assets/logo.png" class="logo">
+
+  <div class="auth-card">
+
+    <h1>Starlight</h1>
+    <h2>Verificar PIN</h2>
+
+    <p class="info">
+      Ingresa el PIN de 6 dígitos enviado a:
+      <strong>{{ correo }}</strong>
+    </p>
+
+    <label>PIN</label>
+    <input
+      type="text"
+      maxlength="6"
+      [(ngModel)]="pin"
+      placeholder="000000">
+
+    <button class="main-btn" (click)="verificarPin()">
+      Verificar PIN
+    </button>
+
+    <button class="secondary-btn" (click)="reenviarPin()">
+      Reenviar PIN
+    </button>
+
+    <a routerLink="/login">Volver al login</a>
+
+  </div>
+
+  @if (toastVisible) {
+    <div class="toast">
+      {{ toastMensaje }}
+    </div>
+  }
+
+</div>

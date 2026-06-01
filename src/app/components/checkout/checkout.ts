@@ -113,25 +113,26 @@ export class CheckoutComponent implements AfterViewInit {
           );
 
           console.log('Pago capturado:', capture);
-
-          await firstValueFrom(
+          const xml = this.carritoService.exportarXML();
+          await firstValueFrom(            
             this.pedidosService.crearPedido({
               id_user: usuario.id_user,
               total: totalCompra,
-              items: itemsCompra
+              items: itemsCompra,
+              xml
             })
           );
 
           console.log('Pedido guardado correctamente');
 
-          this.carritoService.exportarXML();
+         
           this.carritoService.confirmarCompra();
 
           this.paypalButtonContainer.nativeElement.innerHTML = '';
 
           this.setMensaje('Pago realizado correctamente.');
 
-          alert('¡Gracias por tu compra!');
+          alert('¡Gracias por tu compra! El recibo XML se ha mandado a tu correo.');
 
           this.router.navigate(['/perfil']);
 

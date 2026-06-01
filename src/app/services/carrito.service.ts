@@ -141,16 +141,7 @@ for (const p of lista) {
 
 </cfdi:Comprobante>
 `;
-
-  const blob = new Blob([xml], { type: 'application/xml' });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'recibo.xml';
-  a.click();
-
-  URL.revokeObjectURL(url);
+  return xml;
 }
 
   private escapeXml(value: string): string {

@@ -131,7 +131,26 @@
 .historial-box::-webkit-scrollbar-track {
   background: #f5ebfa;
 }
+.btn-cerrar-sesion {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
 
+  border: none;
+  border-radius: 8px;
+
+  background: #8d00c5;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.btn-cerrar-sesion:hover {
+  background: #8d00c5;
+}
 .pedido-card {
   border: 1px solid #dacfe2;
   border-radius: 8px;

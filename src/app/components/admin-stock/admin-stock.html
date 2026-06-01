@@ -1,0 +1,254 @@
+<div class="admin-container">
+
+  <h1>Administrador de Inventario</h1>
+
+  <input
+    class="buscador-admin"
+    type="text"
+    placeholder="Buscar libro..."
+    [(ngModel)]="filtro">
+
+  <div class="acciones-superiores">
+
+  <button
+    class="btn-agregar-toggle"
+    (click)="mostrarFormulario = !mostrarFormulario">
+
+    {{ mostrarFormulario ? 'Cancelar' : 'Agregar libro' }}
+
+  </button>
+
+  <button
+    class="btn-cerrar-sesion"
+    (click)="cerrarSesion()">
+
+    Cerrar sesión
+
+  </button>
+
+</div>
+
+  @if (mostrarFormulario) {
+    <div class="form-agregar">
+
+      <h2>Agregar nuevo libro</h2>
+
+      <div class="campo">
+        <label>Ruta de la portada</label>
+        <input
+          type="text"
+          placeholder="Ejemplo: assets/libros/nombre.jpg"
+          [(ngModel)]="nuevoProducto.portada">
+      </div>
+
+      <div class="campo">
+        <label>Nombre del libro</label>
+        <input
+          type="text"
+          placeholder="Nombre"
+          [(ngModel)]="nuevoProducto.nombre">
+      </div>
+
+      <div class="campo">
+        <label>Autor</label>
+        <input
+          type="text"
+          placeholder="Autor"
+          [(ngModel)]="nuevoProducto.autor">
+      </div>
+
+      <div class="campo">
+        <label>Editorial</label>
+        <input
+          type="text"
+          placeholder="Editorial"
+          [(ngModel)]="nuevoProducto.editorial">
+      </div>
+
+      <div class="campo">
+        <label>Año de publicación</label>
+        <input
+          type="number"
+          placeholder="Año"
+          [(ngModel)]="nuevoProducto.anio">
+      </div>
+
+      <div class="campo">
+        <label>ISBN</label>
+        <input
+          type="number"
+          placeholder="ISBN"
+          [(ngModel)]="nuevoProducto.isbn">
+      </div>
+
+      <div class="campo">
+  <label>Categoría</label>
+
+  <select [(ngModel)]="categoriaSeleccionada">
+    <option value="">Selecciona una categoría</option>
+
+    @for (cat of categorias(); track cat) {
+      <option [value]="cat">{{ cat }}</option>
+    }
+
+    <option value="otra">Otra categoría</option>
+  </select>
+</div>
+
+@if (categoriaSeleccionada === 'otra') {
+  <div class="campo">
+    <label>Nueva categoría</label>
+    <input
+      type="text"
+      placeholder="Ejemplo: Ciencia Ficción"
+      [(ngModel)]="categoriaNueva">
+  </div>
+}
+      <div class="campo descripcion">
+        <label>Descripción</label>
+        <textarea
+          placeholder="Descripción del libro"
+          [(ngModel)]="nuevoProducto.descripcion">
+        </textarea>
+      </div>
+
+      <div class="campo">
+        <label>Precio ($)</label>
+        <input
+          type="number"
+          placeholder="Precio"
+          [(ngModel)]="nuevoProducto.precio">
+      </div>
+
+      <div class="campo">
+        <label>Stock disponible</label>
+        <input
+          type="number"
+          placeholder="Stock"
+          [(ngModel)]="nuevoProducto.stock">
+      </div>
+
+      <button
+        class="btn-guardar-nuevo"
+        (click)="agregarProducto()">
+        Guardar libro
+      </button>
+
+    </div>
+  }
+
+ <div class="productos-admin-grid">
+
+  @for (producto of productosFiltrados; track producto.id) {
+
+    <div class="producto-admin-card">
+
+      <div class="portada-admin">
+        <img [src]="producto.portada" alt="Portada">
+      </div>
+
+      <div class="datos-admin">
+
+        <div class="campo-tabla">
+          <label>Ruta portada</label>
+          <input
+            type="text"
+            [(ngModel)]="producto.portada"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Nombre</label>
+          <input
+            type="text"
+            [(ngModel)]="producto.nombre"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Autor</label>
+          <input
+            type="text"
+            [(ngModel)]="producto.autor"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Editorial</label>
+          <input
+            type="text"
+            [(ngModel)]="producto.editorial"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Año</label>
+          <input
+            type="number"
+            [(ngModel)]="producto.anio"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>ISBN</label>
+          <input
+            type="number"
+            [(ngModel)]="producto.isbn"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Categoría</label>
+          <input
+            type="text"
+            [(ngModel)]="producto.categoria"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Precio</label>
+          <input
+            type="number"
+            [(ngModel)]="producto.precio"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla">
+          <label>Stock</label>
+          <input
+            type="number"
+            [(ngModel)]="producto.stock"
+            [disabled]="!estaEditando(producto.id)">
+        </div>
+
+        <div class="campo-tabla descripcion-admin">
+          <label>Descripción</label>
+          <textarea
+            [(ngModel)]="producto.descripcion"
+            [disabled]="!estaEditando(producto.id)">
+          </textarea>
+        </div>
+
+      </div>
+
+      <div class="acciones-admin">
+        <button
+          class="btn-save"
+          (click)="toggleEditarGuardar(producto)">
+          {{ estaEditando(producto.id) ? 'Guardar' : 'Editar' }}
+        </button>
+
+        <button
+          class="btn-delete"
+          (click)="eliminarVista(producto.id)">
+          Quitar
+        </button>
+      </div>
+
+    </div>
+
+  }
+
+</div>
+
+</div>

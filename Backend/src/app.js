@@ -6,6 +6,7 @@ const paypalRoutes = require('./routes/paypal.routes.js');
 const authRoutes = require('./routes/auth.routes.js');
 const perfilRoutes = require('./routes/perfil.routes.js');
 const pedidosRoutes = require('./routes/pedidos.routes.js');
+const passwordRoutes = require('./routes/password.routes.js');
 const app = express();
 
 app.use(cors());
@@ -16,4 +17,5 @@ app.use('/api/paypal', paypalRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/perfil', perfilRoutes);
 app.use('/api/pedidos', pedidosRoutes);
+app.use('/api/password', passwordRoutes);
 module.exports = app;

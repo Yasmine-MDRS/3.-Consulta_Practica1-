@@ -15,23 +15,25 @@ export class RegisterComponent {
   correo = '';
   contrasena = '';
   domicilio = '';
-
-  toastVisible = false;
-  toastMensaje = '';
-
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
+toastVisible = false;
+toastMensaje = '';
+cargando = false;
+private toastTimer: any;
 
-  mostrarToast(mensaje: string) {
-    this.toastMensaje = mensaje;
-    this.toastVisible = true;
+mostrarToast(mensaje: string) {
+  clearTimeout(this.toastTimer);
 
-    setTimeout(() => {
-      this.toastVisible = false;
-    }, 2500);
-  }
+  this.toastMensaje = mensaje;
+  this.toastVisible = true;
+
+  this.toastTimer = setTimeout(() => {
+    this.toastVisible = false;
+  }, 3000);
+}
 validarPassword(password: string): boolean {
   const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/;
   return regex.test(password);

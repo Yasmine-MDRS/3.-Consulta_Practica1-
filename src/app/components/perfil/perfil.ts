@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { PerfilService } from '../../services/perfil';
 import { PedidosService } from  '../../services/pedidos';
 import {DatePipe} from '@angular/common';
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-perfil',
   standalone: true,
@@ -31,7 +31,8 @@ export class PerfilComponent {
 
   constructor(
     private perfilService: PerfilService,
-    private pedidosService: PedidosService
+    private pedidosService: PedidosService,
+    private router: Router
   ) {
     this.cargarPerfil();
   }
@@ -65,7 +66,12 @@ export class PerfilComponent {
       }
     });
   }
+cerrarSesion() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('usuario');
 
+  this.router.navigate(['/login']);
+}
   cargarPedidos(id_user: number) {
     this.pedidosService.getPedidos(id_user).subscribe({
       next: (data: any[]) => {

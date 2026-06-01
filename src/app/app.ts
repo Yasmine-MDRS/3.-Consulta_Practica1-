@@ -18,7 +18,7 @@ constructor(private router: Router) {
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
 
-      const ocultar = ['/login', '/register'];
+      const ocultar = ['/login', '/register','/admin-stock','/recuperar-password','/verificar-pin','/nueva-password'];
 
       this.mostrarNavbar =
         !ocultar.includes(this.router.url);
