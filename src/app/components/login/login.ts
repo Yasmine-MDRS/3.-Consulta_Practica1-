@@ -57,7 +57,7 @@ export class LoginComponent {
 
         this.authService.guardarSesion(res.token, res.usuario);
 
-        if (res.usuario.rol === 'admin') {
+        if (res.usuario.rol === 'administrador') {
           this.router.navigate(['/admin-stock']);
         } else {
           this.router.navigate(['/home']);
